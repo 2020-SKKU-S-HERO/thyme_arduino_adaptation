@@ -8,7 +8,6 @@ The Arduino Feather M0 is equipped with a Wi-Fi module, which enables sending da
 - 아두이노에 임포트한 코드는 nCube:Thyme과 TAS를 포함한다.  
 The code imported on Arduino include nCube:Thyme and TAS.
 <br>
-<br>
 
 ## 현재 상태 Current Status  
 - CCS811 센서를 사용하여 eCo2와 온도를 센싱한다.
@@ -17,7 +16,7 @@ Measure eCo2 values and temperature values using 'CCS811' sensor.<br>
 Control the LED actuator.<br>
 - 모비우스 서버에 1초마다 데이터를 전송한다.  
 Send data to the Mobius server every second.<br>
-<br><br>
+<br>
 
 ## 과제  TO DO  
 - 센싱한 데이터를 전처리해야 한다.  
@@ -26,7 +25,6 @@ Data should be preprocessed.<br>
 Server should be able to control the period of sending data.<br>
 - 유속, 습도 센서를 추가해야 한다.  
 Flow rate, humidity sensor shall be added.<br>
-<br>
 <br>
 
 ## 사용 방법
