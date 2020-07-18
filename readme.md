@@ -33,29 +33,31 @@ Download Arduino Idle [Idle Download](https://www.arduino.cc/en/Main/Software), 
 <p></p>
 
 1. 아두이노 환경을 설정한다.  
-Configure Arudino Environment.
-<p></p>
-
+Configure Arudino Environment.  
    + 파일 -> 환경설정 -> '추가적인 보드 매니저 URLs' 항목에 `https://adafruit.github.io/arduino-board-index/package_adafruit_index.json`을 추가한다.
    <p></p>
+
    + 툴 -> 보드 -> 보드 매니저... 에서 `adafruit samd boards`를 검색하여 나오는 두 개의 패키지를 모두 설치한다.
    <p></p>
+
    + 툴 -> 보드에서 `Adafruit Feather M0`를 선택한다.
    <p></p>
+
    + 개발환경이 Windows일 경우 Adafruit Windows Driver가 필요하다. [Driver다운로드](http://adafru.it/mai)를 받아 실행한다.
    <p></p>
+
    + 스케치 -> 라이브러리 포함하기 -> 라이브러리 관리... 에서 `ArduinoJson` 과 `WiFi101`을 검색하여 설치한다. 이때, ArduinoJson은 v5.x.x를 설치한다.
    <p></p>
 
-1. nCube:Thyme for arduino를 아두이노 라이브러리에 추가한다.
-<p></p>
 
+1. nCube:Thyme for arduino를 아두이노 라이브러리에 추가한다.  
+Add nCube:Thyme for arduino to the Arduino Library
    + github에서 코드를 다운로드 받는다. 
-   <p></p>
     ```shell script
       git clone 'https://github.com/2020-SKKU-S-HERO/thyme-arduino_adaptation'
     ```
     <p></p>
+    
    + 파일 -> 환경설정 -> 스케치북 위치에서 경로를 확인하여, 해당 경로에 다운로드한 라이브러리들을 옮긴다.
 
 1. 코드를 연다.
