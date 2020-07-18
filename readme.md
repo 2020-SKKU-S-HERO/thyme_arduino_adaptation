@@ -10,9 +10,9 @@ The code imported on Arduino include nCube:Thyme and TAS.
 <br>
 
 ## 현재 상태 Current Status  
-- CCS811 센서를 사용하여 eCo2와 온도를 센싱한다.
+- CCS811 센서를 사용하여 eCo2와 온도를 센싱한다.  
 Measure eCo2 values and temperature values using 'CCS811' sensor.<br>
-- LED Actuator를 제어한다.
+- LED Actuator를 제어한다.  
 Control the LED actuator.<br>
 - 모비우스 서버에 1초마다 데이터를 전송한다.  
 Send data to the Mobius server every second.<br>
