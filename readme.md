@@ -28,13 +28,14 @@ Flow rate, humidity sensor shall be added.<br>
 <br>
 
 ## 사용 방법  How to use
-1. 아두이노 Idle을 [Idle 다운로드](https://www.arduino.cc/en/Main/Software) 하여 설치한다.
+1. 아두이노 Idle을 [Idle 다운로드](https://www.arduino.cc/en/Main/Software) 하여 설치한다.  
 Download Arduino Idle [Idle Download](https://www.arduino.cc/en/Main/Software), execute it.  
 <p></p>
 
-1. 아두이노 환경을 설정한다.
+1. 아두이노 환경을 설정한다.  
 Configure Arudino Environment.
 <p></p>
+
    + 파일 -> 환경설정 -> '추가적인 보드 매니저 URLs' 항목에 `https://adafruit.github.io/arduino-board-index/package_adafruit_index.json`을 추가한다.
    <p></p>
    + 툴 -> 보드 -> 보드 매니저... 에서 `adafruit samd boards`를 검색하여 나오는 두 개의 패키지를 모두 설치한다.
@@ -48,6 +49,7 @@ Configure Arudino Environment.
 
 1. nCube:Thyme for arduino를 아두이노 라이브러리에 추가한다.
 <p></p>
+
    + github에서 코드를 다운로드 받는다. 
    <p></p>
     ```shell script
@@ -55,7 +57,7 @@ Configure Arudino Environment.
     ```
     <p></p>
    + 파일 -> 환경설정 -> 스케치북 위치에서 경로를 확인하여, 해당 경로에 다운로드한 라이브러리들을 옮긴다.
-   
+
 1. 코드를 연다.
    + 파일 -> 예제에서 다운로드한 예제를 연다.
    + 코드를 업로드한다.
