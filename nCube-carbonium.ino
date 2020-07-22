@@ -150,14 +150,15 @@ void buildResource() {
     nCube.configResource(3, "/"+CB_NAME+"/"+AE_NAME, "temp");            // Container resource
     //nCube.configResource(3, "/"+CB_NAME+"/"+AE_NAME, "tvoc");            // Container resource
 
-    //nCube.configResource(23, "/"+CB_NAME+"/"+AE_NAME+"/update", "sub");  // Subscription resource
-    //nCube.configResource(23, "/"+CB_NAME+"/"+AE_NAME+"/led", "sub");     // Subscription resource
+    nCube.configResource(23, "/"+CB_NAME+"/"+AE_NAME+"/update", "sub");  // Subscription resource
+    nCube.configResource(23, "/"+CB_NAME+"/"+AE_NAME+"/led", "sub");     // Subscription resource
 }
 
 // Period of generating sensor data
 void co2GenProcess() {
-    unsigned long currentMillis = millis();
-    if (currentMillis - co2_generate_previousMillis >= co2_generate_interval) {
+    unsigned long currentMillis = millis(); // 서버 작동 이후로 현재 밀리 세컨드 리턴
+    if (currentMillis - co2_generate_previousMillis >= co2_generate_interval) {//interval 이상 되면 작동
+        //co2_generate_interval 조절로 주기 컨트롤
         co2_generate_previousMillis = currentMillis;
         co2_generate_interval = base_generate_interval + (random(1000));
         if (state == "create_cin") {
@@ -169,6 +170,7 @@ void co2GenProcess() {
                     con = "\"" + con + "\"";
 
                     char rqi[10];
+                    //주어진 char 배열에 임의의 letter(0~9, a~z, A~Z)을 집어넣는 함수
                     rand_str(rqi, 8);
                     upload_q.ref[upload_q.push_idx] = "/"+CB_NAME+"/"+AE_NAME+"/"+cnt;
                     upload_q.con[upload_q.push_idx] = con;
@@ -238,6 +240,7 @@ void tvocGenProcess() {
         tvoc_generate_previousMillis = currentMillis;
         tvoc_generate_interval = base_generate_interval + (random(1000));
         if (state == "create_cin") {
+            //state은 resp_handler에서 조절, 신경쓸 필요 없을듯
             String cnt = "tvoc";
             String con = "\"?\"";
 
@@ -407,6 +410,7 @@ void nCube_loop() {
     uploadProcess();
 }
 
+//주어진 char 배열에 임의의 letter(0~9, a~z, A~Z)을 집어넣는 함수
 void rand_str(char *dest, size_t length) {
     char charset[] = "0123456789"
     "abcdefghijklmnopqrstuvwxyz"

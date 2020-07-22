@@ -65,7 +65,12 @@ class OneM2MClient : public WiFiClass
 
     void Init(String _cseid, String _brokerip, String _aeid);
 
-    void configResource(uint8_t ty, String to, String rn);
+  //ty는 2 or 3 or 23
+  //to는 저장할 경로, rn은 새로 만들 디렉토리
+  //2일때 AE_NAME으로 초기화
+  //3일때 각각의 Container 생성
+  //23일 때 Subscription 생성
+  void configResource(uint8_t ty, String to, String rn);
     String validSur(String sur);
 
   private:
