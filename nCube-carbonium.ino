@@ -128,6 +128,7 @@ const String CB_NAME = "Mobius";
 const char* MOBIUS_MQTT_BROKER_IP = "34.64.238.233"; //"192.168.33.86";
 const uint16_t MOBIUS_MQTT_BROKER_PORT = 1883;
 
+//"OneM2MClient.h 에 있음"
 OneM2MClient nCube;
 
 // add TAS(Thing Adaptation Layer) for Sensor
@@ -139,6 +140,7 @@ TasCCS811 TasCCSSensor;
 
 
 // build tree of resource of oneM2M
+// hooN : make containers
 void buildResource() {
     nCube.configResource(2, "/"+CB_NAME, AE_NAME);                       // AE resource
 
@@ -146,10 +148,10 @@ void buildResource() {
     nCube.configResource(3, "/"+CB_NAME+"/"+AE_NAME, "co2");             // Container resource
     nCube.configResource(3, "/"+CB_NAME+"/"+AE_NAME, "led");             // Container resource
     nCube.configResource(3, "/"+CB_NAME+"/"+AE_NAME, "temp");            // Container resource
-    nCube.configResource(3, "/"+CB_NAME+"/"+AE_NAME, "tvoc");            // Container resource
+    //nCube.configResource(3, "/"+CB_NAME+"/"+AE_NAME, "tvoc");            // Container resource
 
-    nCube.configResource(23, "/"+CB_NAME+"/"+AE_NAME+"/update", "sub");  // Subscription resource
-    nCube.configResource(23, "/"+CB_NAME+"/"+AE_NAME+"/led", "sub");     // Subscription resource
+    //nCube.configResource(23, "/"+CB_NAME+"/"+AE_NAME+"/update", "sub");  // Subscription resource
+    //nCube.configResource(23, "/"+CB_NAME+"/"+AE_NAME+"/led", "sub");     // Subscription resource
 }
 
 // Period of generating sensor data
