@@ -276,6 +276,7 @@ void tvocGenProcess() {
     }
 }
 
+//이건 뭘까..?
 // Process notification of Mobius for control
 void notiProcess() {
     if(noti_q.pop_idx != noti_q.push_idx) {
@@ -307,7 +308,7 @@ void notiProcess() {
 }
 //------------------------------------------------------------------------------
 
-void setup() {
+void setup() { //처음 세팅
     // configure the LED pin for output mode
     pinMode(ledPin, OUTPUT);
 
@@ -385,7 +386,8 @@ void loop() {
     notiProcess();
     co2GenProcess();
     tempGenProcess();
-    tvocGenProcess();
+    //tvoc는 뺐음
+    //tvocGenProcess();
 }
 
 //------------------------------------------------------------------------------
@@ -407,6 +409,7 @@ void nCube_loop() {
     chkState();
     publisher();
     otaProcess();
+    //uploadProcess에서 rqi, ref, con에 대해 upload 진행
     uploadProcess();
 }
 
