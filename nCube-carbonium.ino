@@ -121,7 +121,7 @@ unsigned long co2_generate_interval = base_generate_interval;
 
 // Information of CSE as Mobius with MQTT
 const String FIRMWARE_VERSION = "1.0.0.0";
-String AE_NAME = "carbonium";
+String AE_NAME = "hooN";
 String AE_ID = "S" + AE_NAME;
 const String CSE_ID = "/Mobius2";
 const String CB_NAME = "Mobius";
@@ -457,7 +457,7 @@ void WiFi_chkconnect() {
 
             Serial.println("beginProvision - WIFI_INIT");
 //            WiFi.beginProvision();
-            WiFi.begin("AndroidHotspot0353", "05240911noh");
+            WiFi.begin("KT_GiGA_2G_Wave2_7EB6", "2fzccxe418");
 
             WIFI_State = WIFI_CONNECT;
             wifi_previousMillis = 0;
