@@ -121,11 +121,14 @@ unsigned long co2_generate_interval = base_generate_interval;
 
 // Information of CSE as Mobius with MQTT
 const String FIRMWARE_VERSION = "1.0.0.0";
+
+//=========== You need to change the AE_NAME =============
 String AE_NAME = "hooN";
 String AE_ID = "S" + AE_NAME;
 const String CSE_ID = "/Mobius2";
 const String CB_NAME = "Mobius";
-const char* MOBIUS_MQTT_BROKER_IP = "34.64.238.233"; //"192.168.33.86";
+const char* MOBIUS_MQTT_BROKER_IP = "34.64.238.233";//Server IP
+//"192.168.33.86";
 const uint16_t MOBIUS_MQTT_BROKER_PORT = 1883;
 
 //"OneM2MClient.h 에 있음"
@@ -362,7 +365,7 @@ void setup() { //처음 세팅
     String topic = "/oneM2M/resp/" + AE_ID + CSE_ID + "/json";
     topic.toCharArray(resp_topic, 64);
 
-	topic = "/oneM2M/req" + CSE_ID + "/" + AE_ID + "/json";
+  topic = "/oneM2M/req" + CSE_ID + "/" + AE_ID + "/json";
     topic.toCharArray(noti_topic, 64);
 
     nCube.Init(CSE_ID, MOBIUS_MQTT_BROKER_IP, AE_ID);
@@ -457,7 +460,8 @@ void WiFi_chkconnect() {
 
             Serial.println("beginProvision - WIFI_INIT");
 //            WiFi.beginProvision();
-            WiFi.begin("KT_GiGA_2G_Wave2_7EB6", "2fzccxe418");
+//            WiFi.begin("KT_GiGA_2G_Wave2_7EB6", "2fzccxe418");
+            WiFi.begin("SF Lab", "smartfactory");
 
             WIFI_State = WIFI_CONNECT;
             wifi_previousMillis = 0;
@@ -615,15 +619,15 @@ void publisher() {
             body_str = nCube.createAE(mqtt, req_id, 0, "3.14");
 
             if (body_str == "0") {
-        		Serial.println(F("REQUEST Failed"));
-        	}
-        	else {
-        		Serial.print("Request [");
-        		Serial.print(nCube.getReqTopic());
-        		Serial.print("] ----> ");
-        		Serial.println(body_str.length()+1);
-        		Serial.println(body_str);
-        	}
+            Serial.println(F("REQUEST Failed"));
+          }
+          else {
+            Serial.print("Request [");
+            Serial.print(nCube.getReqTopic());
+            Serial.print("] ----> ");
+            Serial.println(body_str.length()+1);
+            Serial.println(body_str);
+          }
             //digitalWrite(ledPin, HIGH);
         }
         else if (state == "create_cnt") {
@@ -634,15 +638,15 @@ void publisher() {
             nCube_State = NCUBE_REQUESTING;
             body_str = nCube.createCnt(mqtt, req_id, sequence);
             if (body_str == "0") {
-        		Serial.println(F("REQUEST Failed"));
-        	}
-        	else {
-        		Serial.print("Request [");
-        		Serial.print(nCube.getReqTopic());
-        		Serial.print("] ----> ");
-        		Serial.println(body_str.length()+1);
-        		Serial.println(body_str);
-        	}
+            Serial.println(F("REQUEST Failed"));
+          }
+          else {
+            Serial.print("Request [");
+            Serial.print(nCube.getReqTopic());
+            Serial.print("] ----> ");
+            Serial.println(body_str.length()+1);
+            Serial.println(body_str);
+          }
             //digitalWrite(ledPin, HIGH);
         }
         else if (state == "delete_sub") {
@@ -653,15 +657,15 @@ void publisher() {
             nCube_State = NCUBE_REQUESTING;
             body_str = nCube.deleteSub(mqtt, req_id, sequence);
             if (body_str == "0") {
-        		Serial.println(F("REQUEST Failed"));
-        	}
-        	else {
-        		Serial.print("Request [");
-        		Serial.print(nCube.getReqTopic());
-        		Serial.print("] ----> ");
-        		Serial.println(body_str.length()+1);
-        		Serial.println(body_str);
-        	}
+            Serial.println(F("REQUEST Failed"));
+          }
+          else {
+            Serial.print("Request [");
+            Serial.print(nCube.getReqTopic());
+            Serial.print("] ----> ");
+            Serial.println(body_str.length()+1);
+            Serial.println(body_str);
+          }
             //digitalWrite(ledPin, HIGH);
         }
         else if (state == "create_sub") {
@@ -672,15 +676,15 @@ void publisher() {
             nCube_State = NCUBE_REQUESTING;
             body_str = nCube.createSub(mqtt, req_id, sequence);
             if (body_str == "0") {
-        		Serial.println(F("REQUEST Failed"));
-        	}
-        	else {
-        		Serial.print("Request [");
-        		Serial.print(nCube.getReqTopic());
-        		Serial.print("] ----> ");
-        		Serial.println(body_str.length()+1);
-        		Serial.println(body_str);
-        	}
+            Serial.println(F("REQUEST Failed"));
+          }
+          else {
+            Serial.print("Request [");
+            Serial.print(nCube.getReqTopic());
+            Serial.print("] ----> ");
+            Serial.println(body_str.length()+1);
+            Serial.println(body_str);
+          }
             //digitalWrite(ledPin, HIGH);
         }
         else if (state == "create_cin") {
@@ -1012,20 +1016,26 @@ void uploadProcess() {
             Serial.println("pop : " + String(upload_q.pop_idx));
             Serial.println("push : " + String(upload_q.push_idx));
             //noInterrupts();
+
+            Serial.println(String(upload_q.rqi[upload_q.pop_idx]));
+            Serial.println(String(upload_q.ref[upload_q.pop_idx]));
+            Serial.println(String(upload_q.con[upload_q.pop_idx]));
             body_str = nCube.createCin(mqtt, upload_q.rqi[upload_q.pop_idx], upload_q.ref[upload_q.pop_idx], upload_q.con[upload_q.pop_idx]);
+            Serial.println(body_str);
+
             wifiClient.flush();
             //interrupts();
             if (body_str == "0") {
-        		Serial.println(F("REQUEST Failed"));
-        	}
-        	else {
+            Serial.println(F("REQUEST Failed"));
+          }
+          else {
                 system_watchdog = 0;
-        		Serial.print("Request [");
-        		Serial.print(nCube.getReqTopic());
-        		Serial.print("] ----> ");
-        		Serial.println(body_str.length()+1);
-        		Serial.println(body_str);
-        	}
+            Serial.print("Request [");
+            Serial.print(nCube.getReqTopic());
+            Serial.print("] ----> ");
+            Serial.println(body_str.length()+1);
+            Serial.println(body_str);
+          }
             //digitalWrite(ledPin, HIGH);
         }
     }
